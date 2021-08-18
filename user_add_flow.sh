@@ -15,15 +15,15 @@ if [[  "$UID" != "0" ]]; then
 
 else
 	read -p "Enter a user name: " username
-	adduser $username
+	adduser "$username"
 
-	read -p -s "Enter a password: " pasword
-	echo $pasword | passwd --stdin $username
+	read -s -p "Enter a password: " password
+	echo "$password" | passwd --stdin "$username"
 
 	read -p "Enter a group name: " gname
-        usermod -a -G $gname $username
+        usermod -a -G "$gname" "$username"
 
 	read -p "Choose home directory: " hdir
-	usermod -m -d "$hdir" $username
+	usermod -m -d "$hdir" "$username"
 
 fi	
